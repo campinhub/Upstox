@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upstox - Get Your Cashback</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+      color: #fff;
+      min-height: 100vh;
+      padding: 20px;
+      position: relative;
+      overflow-x: hidden;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+      animation: fadeInDown 1s ease-out;
+    }
+    .logo {
+      width: 120px;
+      height: auto;
+      margin: 0 auto 15px;
+      filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    .subtitle {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+    .cashback-section {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      margin-bottom: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      animation: float 3s ease-in-out infinite;
+    }
+    .cashback-amount {
+      font-size: 4rem;
+      font-weight: 700;
+      margin: 20px 0;
+      color: #ffcc00;
+      text-shadow: 0 0 20px rgba(255, 204, 0, 0.5);
+    }
+    .new-users-tag {
+      background: rgba(0, 0, 0, 0.4);
+      display: inline-block;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+    }
+    .steps-section {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 25px;
+      margin-bottom: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    }
+    h3 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .steps-container {
+      display: grid;
+      gap: 15px;
+    }
+    .step-card {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 15px;
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      transition: transform 0.3s ease, background 0.3s ease;
+      animation: slideInUp 0.5s ease-out forwards;
+      opacity: 0;
+    }
+    .step-card:nth-child(1) { animation-delay: 0.2s; }
+    .step-card:nth-child(2) { animation-delay: 0.4s; }
+    .step-card:nth-child(3) { animation-delay: 0.6s; }
+    .step-card:nth-child(4) { animation-delay: 0.8s; }
+    .step-card:nth-child(5) { animation-delay: 1.0s; }
+    .step-card:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.25);
+    }
+    .step-number {
+      background: #ffcc00;
+      color: #1a2a6c;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      margin-right: 15px;
+      flex-shrink: 0;
+    }
+    .step-text {
+      text-align: left;
+    }
+    .form-section {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 30px;
+      margin-bottom: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 1s ease-out 1.5s both;
+    }
+    .input-group {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 15px;
+      border-radius: 12px;
+      border: none;
+      background: rgba(255, 255, 255, 0.9);
+      font-size: 1rem;
+    }
+    button {
+      width: 100%;
+      padding: 16px;
+      background: #ffcc00;
+      color: #1a2a6c;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+    button:hover {
+      background: #ffd84d;
+      transform: scale(1.02);
+    }
+    .tnc-section {
+      text-align: center;
+      font-size: 0.85rem;
+      opacity: 0.8;
+      padding: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* Animations */
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      h1 { font-size: 2rem; }
+      .cashback-amount { font-size: 3rem; }
+      .step-card { flex-direction: column; text-align: center; }
+      .step-number { margin-right: 0; margin-bottom: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <img src="https://placehold.co/120x60/FFFFFF/1a2a6c?text=Upstox" alt="Upstox Logo" class="logo">
+      <h1>Upstox</h1>
+      <div class="subtitle">Only For New Users</div>
+    </div>
+
+    <div class="cashback-section">
+      <div class="new-users-tag">Limited Time Offer</div>
+      <h2>Your Cashback</h2>
+      <div class="cashback-amount">₹<span id="animated-amount">0</span></div>
+      <p>You'll receive it in your UPI account within 24-48 Hours</p>
+    </div>
+
+    <div class="steps-section">
+      <h3>HOW TO CLAIM</h3>
+      <div class="steps-container">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <div class="step-text">Download the Upstox app from the Play Store or App Store.</div>
+        </div>
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <div class="step-text">Sign up using your mobile number and verify with OTP.</div>
+        </div>
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <div class="step-text">Complete your KYC process by providing required documents.</div>
+        </div>
+        <div class="step-card">
+          <div class="step-number">4</div>
+          <div class="step-text">Make sure you add the referral code.</div>
+        </div>
+        <div class="step-card">
+          <div class="step-number">5</div>
+          <div class="step-text">Submit your UPI ID below to receive your cashback.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3>Enter Your UPI ID</h3>
+      <div class="input-group">
+        <label for="upi-id">UPI ID (e.g. yourname@bank)</label>
+        <input type="text" id="upi-id" placeholder="Enter your UPI ID">
+      </div>
+      <button id="submit-btn">Get My Cashback</button>
+    </div>
+
+    <div class="tnc-section">
+      <p>TERMS & CONDITIONS</p>
+      <p>© 2026 All Rights Reserved</p>
+    </div>
+  </div>
+
+  <script>
+    // Animate the cashback amount
+    const amountElement = document.getElementById('animated-amount');
+    const targetAmount = 401;
+    let currentAmount = 0;
+    const duration = 2000; // ms
+    const increment = targetAmount / (duration / 16); // ~60fps
+
+    const animateAmount = () => {
+      if(currentAmount < targetAmount) {
+        currentAmount += increment;
+        if(currentAmount > targetAmount) currentAmount = targetAmount;
+        amountElement.textContent = Math.floor(currentAmount).toString();
+        requestAnimationFrame(animateAmount);
+      } else {
+        amountElement.textContent = targetAmount.toString();
+      }
+    };
+
+    setTimeout(animateAmount, 500); // Start after a short delay
+
+    // Handle form submission and redirect without popup
+    document.getElementById('submit-btn').addEventListener('click', function() {
+        const upiId = document.getElementById('upi-id').value.trim();
+        if(upiId) {
+            // Directly redirect without showing any alert/popup
+            window.location.href = 'https://upstox.onelink.me/0H1s/7SB5X3';
+        } else {
+            alert('Please enter a valid UPI ID.');
+        }
+    });
+  </script>
+</body>
+</html>
+
